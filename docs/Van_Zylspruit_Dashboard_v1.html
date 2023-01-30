@@ -97,3 +97,104 @@
     neutralOutlineHoverBehavior,
     neutralOutlineRestBehavior
   } from "https://cdn.holoviz.org/panel/0.14.2/dist/bundled/js/@microsoft/fast-components@1.21.8/dist/fast-components.js";
+
+  function standardize_color(str){
+    var ctx = document.createElement('canvas').getContext('2d');
+    ctx.fillStyle = str;
+    return ctx.fillStyle;
+  }
+
+  function setAccentColor(color, selector){
+      color = standardize_color(color);
+      const accent = color;
+      const palette = createColorPalette(parseColorHexRGB(accent));
+      const provider = document.querySelector(selector);
+      provider.accentBaseColor = accent;
+      provider.accentPalette = palette;
+  }
+  setAccentColor("#0072B5", "#body-design-provider");
+  setAccentColor("#ffffff", "#header-design-provider");
+
+  function setNeutralColor(color, selector){
+      color = standardize_color(color);
+      const palette = createColorPalette(parseColorHexRGB(color));
+      const provider = document.querySelector(selector);
+
+      provider.neutralPalette = palette;
+  }
+  setNeutralColor("#ffffff", "#header-design-provider");
+  setNeutralColor("#000000", "#body-design-provider");
+
+  function setBackgroundColor(color, selector){
+    color = standardize_color(color);
+    const provider = document.querySelector(selector);
+    provider.backgroundColor=color;
+  }
+  setBackgroundColor("#0072B5", "#header-design-provider");
+  setBackgroundColor("#ffffff", "#body-design-provider");
+
+  document.querySelector("#body-design-provider").cornerRadius=3;
+
+  function registerCSSCustomProperties(selector)  {
+    const provider = document.querySelector(selector);
+    provider.registerCSSCustomProperty(accentFillActiveBehavior)
+    provider.registerCSSCustomProperty(neutralFillRestBehavior)
+    provider.registerCSSCustomProperty(accentFillHoverBehavior)
+    provider.registerCSSCustomProperty(accentFillRestBehavior)
+    provider.registerCSSCustomProperty(accentForegroundActiveBehavior)
+    provider.registerCSSCustomProperty(accentForegroundCutRestBehavior)
+    provider.registerCSSCustomProperty(accentForegroundFocusBehavior)
+    provider.registerCSSCustomProperty(accentForegroundHoverBehavior)
+    provider.registerCSSCustomProperty(accentForegroundRestBehavior)
+    provider.registerCSSCustomProperty(neutralDividerRestBehavior)
+    provider.registerCSSCustomProperty(neutralFillHoverBehavior)
+    provider.registerCSSCustomProperty(neutralFillInputActiveBehavior)
+    provider.registerCSSCustomProperty(neutralFillInputHoverBehavior)
+    provider.registerCSSCustomProperty(neutralFillInputRestBehavior)
+    provider.registerCSSCustomProperty(neutralFillRestBehavior)
+    provider.registerCSSCustomProperty(neutralFillStealthActiveBehavior)
+    provider.registerCSSCustomProperty(neutralFillStealthHoverBehavior)
+    provider.registerCSSCustomProperty(neutralFillStealthRestBehavior)
+    provider.registerCSSCustomProperty(neutralFocusBehavior)
+    provider.registerCSSCustomProperty(neutralFocusInnerAccentBehavior)
+    provider.registerCSSCustomProperty(neutralForegroundActiveBehavior)
+    provider.registerCSSCustomProperty(neutralForegroundHoverBehavior)
+    provider.registerCSSCustomProperty(neutralLayerFloatingBehavior)
+    provider.registerCSSCustomProperty(neutralOutlineActiveBehavior)
+    provider.registerCSSCustomProperty(neutralOutlineHoverBehavior)
+    provider.registerCSSCustomProperty(neutralOutlineRestBehavior)
+  }
+  registerCSSCustomProperties("#header-design-provider")
+  registerCSSCustomProperties("#body-design-provider")
+
+  class FastDesignProvider {
+    setAccentColor(value, element){
+      setAccentColor(value, element);
+    }
+    setNeutralColor(value, element){
+      setNeutralColor(value, element);
+    }
+    setBackgroundColor(value, element){
+      setBackgroundColor(value, element)
+    }
+  }
+  window.fastDesignProvider = new FastDesignProvider()
+</script>
+  </head>
+  <body class="bk pn-loading arc">
+<fast-design-system-provider id="body-design-provider" use-defaults accent-foreground-cut-rest="#FFFFFF"
+background-color="#ffffff"accent-base-color="#0072B5"  >
+  <div id="container">
+  <fast-design-system-provider id="header-design-provider"
+background-color="#0072B5"  >
+  <nav id="header">
+    <span onclick="closeNav()" id="sidebar-button">
+      <div class="pn-bar"></div>
+      <div class="pn-bar"></div>
+      <div class="pn-bar"></div>
+	  </span>
+    <fast-tooltip anchor="sidebar-button" position="right">
+      Toggle the Sidebar
+    </fast-tooltip>
+    <div class="app-header">
+<a class="title" href="" >Van Zylspruit Thermistor Data Dashboard</a>    </div>
