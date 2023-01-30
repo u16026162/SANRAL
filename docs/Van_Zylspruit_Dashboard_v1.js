@@ -52,7 +52,7 @@ init_doc()
 
 # # Import Modules
 
-# In[ ]:
+# In[1]:
 
 
 import pandas as pd, numpy as np, matplotlib.pyplot as plt, panel as pn, holoviews as hv, datetime as dt
@@ -67,12 +67,11 @@ from matplotlib.figure import Figure
 
 # # Load Data
 
-# In[ ]:
+# In[4]:
 
 
-df = pd.read_csv("2016-01 to 2017-07 Thermistor string.csv", 
-                 parse_dates=[["Date", "Time"]])#,
-                 #usecols = np.arange(8))
+df = pd.read_csv("https://raw.githubusercontent.com/u16026162/SANRAL/main/docs/2016-01%20to%202017-07%20Thermistor%20string.csv", 
+                 parse_dates=[["Date", "Time"]])
 
 df["Date_Time"] = pd.to_datetime(df["Date_Time"])
 
