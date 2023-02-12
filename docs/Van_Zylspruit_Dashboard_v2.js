@@ -165,7 +165,7 @@ PLOT = ihvplot*lineplot
 
 
 template = pn.template.FastListTemplate(
-            title = "Van Zylspruit Thermistor Data Dashboard",
+            title = "Van Zylspruit Thermistor Data Dashboard - Version 2",
             sidebar = ["Select Thermistor(s):", multi_select, 
                        "Select Date Range:", date_range_slider, 
                        "Select Date:", date_slider],
