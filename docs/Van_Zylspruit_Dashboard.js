@@ -59,7 +59,7 @@ init_doc()
 
 import pandas as pd, numpy as np, matplotlib.pyplot as plt, panel as pn, holoviews as hv, datetime as dt
 import matplotlib as mpl
-import hvplot.pandas
+import hvplot.pandas, fastparquet
 
 from matplotlib.figure import Figure
 
