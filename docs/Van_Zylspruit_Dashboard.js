@@ -15,7 +15,7 @@ async function startApplication() {
   self.pyodide.globals.set("sendPatch", sendPatch);
   console.log("Loaded!");
   await self.pyodide.loadPackage("micropip");
-  const env_spec = ['https://cdn.holoviz.org/panel/0.14.2/dist/wheels/bokeh-2.4.3-py3-none-any.whl', 'https://cdn.holoviz.org/panel/0.14.2/dist/wheels/panel-0.14.2-py3-none-any.whl', 'pyodide-http==0.1.0', 'pandas', 'numpy', 'matplotlib', 'holoviews', 'hvplot', 'datetime', 'fastparquet']
+  const env_spec = ['https://cdn.holoviz.org/panel/0.14.2/dist/wheels/bokeh-2.4.3-py3-none-any.whl', 'https://cdn.holoviz.org/panel/0.14.2/dist/wheels/panel-0.14.2-py3-none-any.whl', 'pyodide-http==0.1.0', 'pandas', 'numpy', 'matplotlib', 'holoviews', 'hvplot', 'datetime']
   for (const pkg of env_spec) {
     let pkg_name;
     if (pkg.endsWith('.whl')) {
@@ -59,7 +59,7 @@ init_doc()
 
 import pandas as pd, numpy as np, matplotlib.pyplot as plt, panel as pn, holoviews as hv, datetime as dt
 import matplotlib as mpl
-import hvplot.pandas, fastparquet
+import hvplot.pandas
 
 from matplotlib.figure import Figure
 
@@ -76,9 +76,9 @@ pn.extension()
 
 #df = pd.read_pickle("all_thermistor_data.pickle", compression = "zip")
 
-#df = pd.read_csv("https://raw.githubusercontent.com/u16026162/SANRAL/main/docs/all_thermistor_data.csv")
+df = pd.read_csv("https://raw.githubusercontent.com/u16026162/SANRAL/main/docs/all_thermistor_data.csv")
 
-df = pd.read_parquet("https://raw.githubusercontent.com/u16026162/SANRAL/main/docs/all_thermistor_data.parquet")
+#df = pd.read_parquet("https://raw.githubusercontent.com/u16026162/SANRAL/main/docs/all_thermistor_data.parquet")
 
 df["Date and Time"] = pd.to_datetime(df["Date and Time"])
 
