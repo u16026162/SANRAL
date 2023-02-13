@@ -61,7 +61,6 @@ import pandas as pd, numpy as np, matplotlib.pyplot as plt, panel as pn, holovie
 import matplotlib as mpl
 import hvplot.pandas
 
-from matplotlib import cm
 from matplotlib.figure import Figure
 
 pn.extension()
@@ -229,7 +228,7 @@ def plot_contours(date):
     tricontour = ax.tricontourf(Triangulation, z, cmap = "jet", levels = levels)
     bridge = ax.plot(bx, by, color = "k")
     
-    cbar = plt.colorbar(tricontour, ticks = np.arange(int(z.min())-1, int(z.max()+2), 1), ax = ax)
+    cbar = mpl.pyplot.colorbar(tricontour, ticks = np.arange(int(z.min())-1, int(z.max()+2), 1), ax = ax)
     cbar.set_label("Temperature [℃]", rotation=90)
     
     ax.set_title(f"{title}")
@@ -240,7 +239,7 @@ def plot_contours(date):
     ax.set_yticks([])
     ax.axis("off")
     
-    plt.tight_layout()
+    #plt.tight_layout()
     
     return fig
 
